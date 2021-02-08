@@ -31,20 +31,4 @@ public class StudentController {
     }
 
 
-
-
-
-    @PostMapping(value = "/StudentPOJSON")
-    public StudentPO StudentPOJSON(){
-        StudentPO studentPO = new StudentPO();
-        studentPO.setSApplyStatus(2);
-        studentPO.setSCollege("dfsdf");
-        studentPO.setSCounselorCode("srrfsf");
-        studentPO.setSGrade("sfesf");
-        studentPO.setSProfessional("hjhj");
-        studentPO.setSSchoolStatus(9);
-        return studentPO;
-    }
-
-
 }
