@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="design.uppms.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="design.uppms.model.po.UserPO">
+        <id column="uId" property="uId" />
+        <result column="uNumber" property="uNumber" />
+        <result column="uName" property="uName" />
+        <result column="uAttribute" property="uAttribute" />
+        <result column="uPassword" property="uPassword" />
+        <result column="uPhone" property="uPhone" />
+    </resultMap>
+
+</mapper>
