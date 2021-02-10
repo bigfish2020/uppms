@@ -6,6 +6,9 @@ import design.uppms.service.impl.LoginRegisteServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+
+import java.time.Duration;
 
 @SpringBootTest
 class UppmsApplicationTests {
@@ -13,11 +16,12 @@ class UppmsApplicationTests {
     private UserMapper user;
     @Autowired
     private LoginRegisteServiceImpl loginRegisteService;
-
+    @Autowired
+    private RedisTemplate<Object, Integer> redisTemplate;
 
 
     @Test
-    void contextLoads() {
+    void Test1() {
         RegisteDTO dto = new RegisteDTO();
         dto.setUName("ssdfd");
         dto.setUPassword("123");
@@ -26,5 +30,18 @@ class UppmsApplicationTests {
         dto.setUNumber("seffs");
         loginRegisteService.registeUser(dto);
     }
+
+    @Test
+    void Test2() {
+        redisTemplate.opsForValue().set("key",23, Duration.ofHours(23L));
+        Integer key = redisTemplate.opsForValue().get("key");
+        System.out.println("1");
+        System.out.println(key);
+        System.out.println("2");
+    }
+
+
+
+
 
 }
