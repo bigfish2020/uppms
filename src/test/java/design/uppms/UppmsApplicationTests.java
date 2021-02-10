@@ -1,5 +1,6 @@
 package design.uppms;
 
+import design.uppms.common.aliyun.SendSms;
 import design.uppms.mapper.UserMapper;
 import design.uppms.model.dto.RegisteDTO;
 import design.uppms.service.impl.LoginRegisteServiceImpl;
@@ -18,6 +19,8 @@ class UppmsApplicationTests {
     private LoginRegisteServiceImpl loginRegisteService;
     @Autowired
     private RedisTemplate<Object, Integer> redisTemplate;
+    @Autowired
+    private SendSms sendSms;
 
 
     @Test
@@ -38,6 +41,12 @@ class UppmsApplicationTests {
         System.out.println("1");
         System.out.println(key);
         System.out.println("2");
+    }
+
+
+    @Test
+    void Test3() {
+        sendSms.sendmessage("123");
     }
 
 
