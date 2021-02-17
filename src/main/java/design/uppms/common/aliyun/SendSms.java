@@ -10,10 +10,11 @@ import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class SendSms {
-    public void sendmessage(String str) {
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "<accessKeyId>", "<accessSecret>");
+    public void sendmessage(Integer code) {
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4GL4gLjJGC1LBSQYS1Ju", "fchZg4Fk62BXg2v5ToZtR43pCqQJ1V");
         IAcsClient client = new DefaultAcsClient(profile);
 
         CommonRequest request = new CommonRequest();
@@ -25,7 +26,7 @@ public class SendSms {
         request.putQueryParameter("PhoneNumbers", "13364013415");
         request.putQueryParameter("SignName", "很菜的蜗牛");
         request.putQueryParameter("TemplateCode", "SMS_199791027");
-        request.putQueryParameter("TemplateParam", "{\"code\":"+str);
+        request.putQueryParameter("TemplateParam", "{\"code\":"+code+"}");
         try {
             CommonResponse response = client.getCommonResponse(request);
             System.out.println(response.getData());

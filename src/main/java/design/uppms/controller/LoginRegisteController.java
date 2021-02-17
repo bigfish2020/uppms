@@ -1,16 +1,12 @@
 package design.uppms.controller;
 
-import design.uppms.model.dto.RegisteDTO;
-import design.uppms.model.po.StudentPO;
+import design.uppms.model.dto.UserDTO;
 import design.uppms.model.po.UserPO;
 import design.uppms.service.LoginRegisteService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Api(tags = "登录注册")
@@ -22,15 +18,21 @@ public class LoginRegisteController {
 
 
     @ApiOperation("登录")
-    @PostMapping(value = "/writeInformation")
-    public boolean login(@RequestPart UserPO userPO){
+    @PostMapping(value = "/Login")
+    public boolean login(@RequestPart UserDTO userDTO){
         return false;
     }
 
     @ApiOperation("注册")
-    @PostMapping(value = "/sign")
-    public boolean registe(@RequestPart RegisteDTO registeDTO){
-        return loginRegisteService.registeUser(registeDTO);
+    @PostMapping(value = "/Registe")
+    public boolean registe(@RequestParam Integer code,@RequestPart UserDTO userDTO){
+        return loginRegisteService.registeUser(userDTO);
+    }
+
+    @ApiOperation("信息提交")
+    @PostMapping(value = "/Submit")
+    public UserDTO submit(@RequestPart UserDTO userDTO){
+        return loginRegisteService.submit(userDTO);
     }
 
 

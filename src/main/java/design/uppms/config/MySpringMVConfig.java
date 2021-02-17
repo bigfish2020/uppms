@@ -67,14 +67,7 @@ public class MySpringMVConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(myInterceptor)
-                .addPathPatterns("/LoginRegiste/sign");
-                /*.addPathPatterns("/creatQuotedPrice/*")
-                .addPathPatterns("/Contract/*")
-                .addPathPatterns("/Demand/*")
-                .addPathPatterns("/QuotedPrice/*")
-                .addPathPatterns("/Subsidiary/*")
-                .addPathPatterns("/selectList/**")
-                .addPathPatterns("/echo/**");*/
+                .addPathPatterns("/LoginRegiste/Registe");
     }
 
 

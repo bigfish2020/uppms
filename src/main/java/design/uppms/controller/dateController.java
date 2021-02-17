@@ -1,6 +1,6 @@
 package design.uppms.controller;
 
-import design.uppms.model.dto.RegisteDTO;
+import design.uppms.model.dto.UserDTO;
 import design.uppms.model.po.StudentPO;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +26,9 @@ public class dateController {
         return studentPO;
     }
 
-    @PostMapping(value = "/RegisteDTOJSON")
-    public RegisteDTO RegisteDTOJSON(){
-        RegisteDTO dto = new RegisteDTO();
+    @PostMapping(value = "/UserDTOJSON")
+    public UserDTO RegisteDTOJSON(){
+        UserDTO dto = new UserDTO();
         dto.setUName("ssdfd");
         dto.setUPassword("123");
         dto.setUPhone("12345678901");
@@ -36,7 +36,6 @@ public class dateController {
         dto.setUNumber("seffs");
         return dto;
     }
-
 
 
 }

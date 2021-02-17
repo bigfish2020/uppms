@@ -18,14 +18,17 @@ import java.util.concurrent.TimeUnit;
 public class MyInterceptor implements HandlerInterceptor {
     @Autowired
     private RedisTemplate<Object, Integer> redisTemplate;
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //通过request.getParameter("name");获取控制方法的参数值
+        String StrCode = request.getParameter("code");
+        Integer code = Integer.valueOf(StrCode);
+        System.out.println("code= "+code);
         String Token = request.getHeader("Token");
-
         //在redis中查询，如果有该用户，则合法
         Integer integer = redisTemplate.opsForValue().get(Token);
-        if (integer != null){
+        System.out.println("integer= "+integer);
+        if (integer.equals(code)){
             //合法
             //重置过期时间,保证用户登录后只要是在操作就不会过期，登陆后不操作1小时过期
             redisTemplate.expire(Token,1L, TimeUnit.HOURS);

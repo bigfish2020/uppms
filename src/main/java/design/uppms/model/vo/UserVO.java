@@ -1,10 +1,9 @@
-package design.uppms.model.dto;
+package design.uppms.model.vo;
 
 import lombok.Data;
 
 @Data
-public class RegisteDTO {
-
+public class UserVO {
     private Integer uId;
 
     //18位身份证号
@@ -21,6 +20,4 @@ public class RegisteDTO {
 
     //11位手机号
     private String uPhone;
-
-
 }

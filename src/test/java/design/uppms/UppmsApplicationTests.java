@@ -1,8 +1,9 @@
 package design.uppms;
 
+import cn.hutool.core.util.RandomUtil;
 import design.uppms.common.aliyun.SendSms;
 import design.uppms.mapper.UserMapper;
-import design.uppms.model.dto.RegisteDTO;
+import design.uppms.model.dto.UserDTO;
 import design.uppms.service.impl.LoginRegisteServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ class UppmsApplicationTests {
 
     @Test
     void Test1() {
-        RegisteDTO dto = new RegisteDTO();
+        UserDTO dto = new UserDTO();
         dto.setUName("ssdfd");
         dto.setUPassword("123");
         dto.setUPhone("12345678901");
@@ -46,9 +47,22 @@ class UppmsApplicationTests {
 
     @Test
     void Test3() {
-        sendSms.sendmessage("123");
+        sendSms.sendmessage(123);
     }
 
+    @Test
+    void Test4() {
+        System.out.println("111");
+        System.out.println(RandomUtil.randomInt());
+        System.out.println("222");
+    }
+
+    @Test
+    void Test5() {
+        System.out.println("111");
+        System.out.println(RandomUtil.randomString(3));
+        System.out.println("222");
+    }
 
 
 
