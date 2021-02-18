@@ -1,7 +1,6 @@
 package design.uppms.service;
 
 import design.uppms.model.dto.UserDTO;
-import design.uppms.model.vo.UserVO;
 
 public interface LoginRegisteService {
     //登录
