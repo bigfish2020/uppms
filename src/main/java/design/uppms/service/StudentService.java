@@ -9,10 +9,15 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author chenli
- * @since 2021-02-08
+ * @since 2021-02-18
  */
 public interface StudentService extends IService<StudentPO> {
+
+
+    //填写学生信息
     public boolean writeInformation(StudentPO studentPO);
 
+    //学生报名
     public boolean sign(StudentPO studentPO);
+
 }

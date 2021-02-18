@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author chenli
- * @since 2021-02-08
+ * @since 2021-02-18
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -51,6 +51,10 @@ public class StudentPO implements Serializable {
     @ApiModelProperty(value = "在校状态")
     @TableField("sSchoolStatus")
     private Integer sSchoolStatus;
+
+    @ApiModelProperty(value = "对应的用户ID")
+    @TableField("sUID")
+    private Integer sUID;
 
 
 }

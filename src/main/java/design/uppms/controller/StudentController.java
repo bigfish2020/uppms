@@ -19,13 +19,13 @@ public class StudentController {
     private StudentService studentService;
 
     @ApiOperation("学生填写基本信息")
-    @PostMapping(value = "/writeInformation")
+    @PostMapping(value = "/WriteInformation")
     public boolean writeInformation(@RequestPart StudentPO studentPO){
         return studentService.writeInformation(studentPO);
     }
 
     @ApiOperation("学生报名")
-    @PostMapping(value = "/sign")
+    @PostMapping(value = "/Sign")
     public boolean sign(@RequestPart StudentPO studentPO){
         return studentService.sign(studentPO);
     }

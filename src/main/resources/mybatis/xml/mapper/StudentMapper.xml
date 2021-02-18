@@ -11,6 +11,7 @@
         <result column="sCounselorCode" property="sCounselorCode" />
         <result column="sApplyStatus" property="sApplyStatus" />
         <result column="sSchoolStatus" property="sSchoolStatus" />
+        <result column="sUID" property="sUID" />
     </resultMap>
 
 </mapper>

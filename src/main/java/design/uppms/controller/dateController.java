@@ -23,6 +23,7 @@ public class dateController {
         studentPO.setSGrade("sfesf");
         studentPO.setSProfessional("hjhj");
         studentPO.setSSchoolStatus(9);
+        studentPO.setSUID(1);
         return studentPO;
     }
 
