@@ -25,28 +25,35 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, StudentPO> im
     //填写学生信息
     @Override
     public boolean writeInformation(StudentPO studentPO) {
-        if (studentMapper.insert(studentPO)==1){
-            return true;
+        QueryWrapper<StudentPO> queryWrapper = new QueryWrapper();
+        queryWrapper.eq("sUID",studentPO.getSUID());
+        if (studentMapper.selectOne(queryWrapper)==null){
+            if (studentMapper.insert(studentPO)==1){
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            return false;
         }
-        return false;
     }
 
     //学生报名
     @Override
     public boolean sign(StudentPO studentPO) {
         QueryWrapper<StudentPO> queryWrapper = new QueryWrapper();
-        queryWrapper.eq("sProfessional",studentPO.getSProfessional());
-        queryWrapper.eq("sGrade",studentPO.getSGrade());
-        queryWrapper.eq("sCollege",studentPO.getSCollege());
-        queryWrapper.eq("sCounselorCode",studentPO.getSCounselorCode());
-        queryWrapper.eq("sApplyStatus",studentPO.getSApplyStatus());
-        studentMapper.selectOne(queryWrapper);
-        if (studentMapper.selectById(studentPO.getSId()).getSApplyStatus()==1){
-            return false;
+        queryWrapper.eq("sUID",studentPO.getSUID());
+        StudentPO studentPO1 = studentMapper.selectOne(queryWrapper);
+        if (studentPO1!=null){
+            if (studentPO1.getSApplyStatus()==0){
+                studentPO.setSApplyStatus(1);
+                studentMapper.update(studentPO,queryWrapper);
+                return true;
+            }else {
+                return false;
+            }
         }else {
-            studentPO.setSApplyStatus(1);
-            studentMapper.updateById(studentPO);
-            return true;
+            return false;
         }
     }
 }

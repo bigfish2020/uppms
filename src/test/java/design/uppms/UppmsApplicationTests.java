@@ -3,8 +3,10 @@ package design.uppms;
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import design.uppms.common.aliyun.SendSms;
+import design.uppms.mapper.StudentMapper;
 import design.uppms.mapper.UserMapper;
 import design.uppms.model.dto.UserDTO;
+import design.uppms.model.po.StudentPO;
 import design.uppms.model.po.UserPO;
 import design.uppms.service.impl.LoginRegisteServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,8 @@ class UppmsApplicationTests {
     private RedisTemplate<Object, Integer> redisTemplate;
     @Autowired
     private SendSms sendSms;
+    @Autowired(required = false)
+    private StudentMapper studentMapper;
 
 
     @Test
@@ -82,6 +86,24 @@ class UppmsApplicationTests {
         }
         System.out.println(userPOS.size());
         System.out.println("222");
+    }
+
+    @Test
+    void Test7() {
+        StudentPO studentPO = new StudentPO();
+        studentPO.setSApplyStatus(2);
+        studentPO.setSCollege("dfsdf");
+        studentPO.setSCounselorCode("srrfsf");
+        studentPO.setSGrade("sfesf");
+        studentPO.setSProfessional("hjhj");
+        studentPO.setSSchoolStatus(9);
+        studentPO.setSUID(3);
+
+
+        QueryWrapper<StudentPO> queryWrapper = new QueryWrapper();
+        queryWrapper.eq("sUID",studentPO.getSUID());
+        StudentPO studentPO1 = studentMapper.selectOne(queryWrapper);
+        System.out.println(studentPO1==null);
     }
 
 
