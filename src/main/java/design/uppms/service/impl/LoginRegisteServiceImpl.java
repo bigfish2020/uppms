@@ -2,6 +2,7 @@ package design.uppms.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.RandomUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import design.uppms.common.aliyun.SendSms;
 import design.uppms.mapper.UserMapper;
 import design.uppms.model.dto.UserDTO;
@@ -23,6 +24,21 @@ public class LoginRegisteServiceImpl implements LoginRegisteService {
     private SendSms sendSms;
     @Autowired
     private RedisTemplate<Object, Integer> redisTemplate;
+
+    //登录
+    @Override
+    public boolean Login(UserDTO userDTO) {
+        UserPO userPO = new UserPO();
+        BeanUtil.copyProperties(userDTO,userPO);
+        QueryWrapper<UserPO> queryWrapper = new QueryWrapper();
+        queryWrapper.eq("uPhone",userPO.getUPhone());
+        queryWrapper.eq("uPassword",userPO.getUPassword());
+        if (userMapper.selectList(queryWrapper).size()>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     //注册
     @Override

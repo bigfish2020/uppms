@@ -5,6 +5,7 @@ import design.uppms.model.vo.UserVO;
 
 public interface LoginRegisteService {
     //登录
+    public boolean Login(UserDTO userDTO);
 
     //信息提交
     public UserDTO submit(UserDTO userDTO);

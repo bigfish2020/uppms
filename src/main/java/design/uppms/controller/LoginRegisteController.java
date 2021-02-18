@@ -20,7 +20,7 @@ public class LoginRegisteController {
     @ApiOperation("登录")
     @PostMapping(value = "/Login")
     public boolean login(@RequestPart UserDTO userDTO){
-        return false;
+        return loginRegisteService.Login(userDTO);
     }
 
     @ApiOperation("注册")
