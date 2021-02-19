@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.text.ParseException;
 
 @RestController
 @Api(tags = "实习生的一些操作")
@@ -24,13 +27,16 @@ public class InternController {
     @ApiOperation("填写每天实习情况")
     @PostMapping(value = "/WriteInformation")
     public boolean writeInformation(HttpServletRequest request,@RequestPart InternPO internPO){
-        System.out.println("你好");
-        System.out.println(internPO.toString());
-        System.out.println("你好");
-
         return internService.writeInformation(internPO,request);
     }
 
+
+
+    @ApiOperation("上传毕业设计资料")
+    @PostMapping(value = "/upload")
+    public String upload(MultipartFile file, HttpServletRequest request) throws IOException, ParseException {
+        return internService.upload(file,request);
+    }
 
 
 }
