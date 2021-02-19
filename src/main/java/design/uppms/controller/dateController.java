@@ -1,6 +1,7 @@
 package design.uppms.controller;
 
 import design.uppms.model.dto.UserDTO;
+import design.uppms.model.po.InternPO;
 import design.uppms.model.po.StudentPO;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,15 @@ public class dateController {
         dto.setUAttribute(2);
         dto.setUNumber("seffs");
         return dto;
+    }
+
+    @PostMapping(value = "/InternPOJSON")
+    public InternPO InternPOJSON(){
+        InternPO internPO = new InternPO();
+        internPO.setPosition("dfsxdf");
+        internPO.setAssessmentLevel(2);
+        internPO.setWorkContent("sdrgserger");
+        return internPO;
     }
 
 
