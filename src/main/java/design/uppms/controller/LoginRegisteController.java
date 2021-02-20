@@ -26,6 +26,10 @@ public class LoginRegisteController {
     @ApiOperation("注册")
     @PostMapping(value = "/Registe")
     public boolean registe(@RequestParam Integer code,@RequestPart UserDTO userDTO){
+        System.out.println("11111");
+        System.out.println(userDTO.toString());
+        System.out.println(code);
+        System.out.println("11111");
         return loginRegisteService.registeUser(userDTO);
     }
 

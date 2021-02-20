@@ -45,9 +45,18 @@ public class LoginRegisteServiceImpl implements LoginRegisteService {
     public boolean registeUser(UserDTO userDTO) {
         UserPO userPO = new UserPO();
         BeanUtil.copyProperties(userDTO,userPO);
-        int insert = userMapper.insert(userPO);
-        if (insert==1){
-            return true;
+        //判断该身份证号是否已被注册
+        QueryWrapper<UserPO> wrapper = new QueryWrapper<>();
+        wrapper.eq("uNumber",userPO.getUNumber());
+        UserPO userPO1 = userMapper.selectOne(wrapper);
+        if (userMapper.selectOne(wrapper)==null){
+            //执行插入操作
+            int insert = userMapper.insert(userPO);
+            if (insert==1){
+                return true;
+            }else {
+                return false;
+            }
         }else {
             return false;
         }
