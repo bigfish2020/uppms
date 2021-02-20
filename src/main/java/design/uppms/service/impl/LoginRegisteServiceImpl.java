@@ -7,7 +7,6 @@ import design.uppms.common.aliyun.SendSms;
 import design.uppms.mapper.UserMapper;
 import design.uppms.model.dto.UserDTO;
 import design.uppms.model.po.UserPO;
-import design.uppms.model.vo.UserVO;
 import design.uppms.service.LoginRegisteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -50,10 +49,16 @@ public class LoginRegisteServiceImpl implements LoginRegisteService {
         wrapper.eq("uNumber",userPO.getUNumber());
         UserPO userPO1 = userMapper.selectOne(wrapper);
         if (userMapper.selectOne(wrapper)==null){
-            //执行插入操作
-            int insert = userMapper.insert(userPO);
-            if (insert==1){
-                return true;
+            //判断密码合法性
+            int leath = userPO.getUPassword().length();
+            if (leath>=6&&leath<=12){
+                //执行插入操作
+                int insert = userMapper.insert(userPO);
+                if (insert==1){
+                    return true;
+                }else {
+                    return false;
+                }
             }else {
                 return false;
             }
